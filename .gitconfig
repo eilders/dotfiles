@@ -76,6 +76,27 @@
 		fi \
 	}; f"
 
+	co = checkout
+	master = checkout master
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	gsu = submodule update --init --recursive
+	cob = checkout -b
+	quicksave = !git add -A && git commit -m 'SAVEPOINT'
+	save = !git add -A && git commit -m
+	wip = commit -am 'WIP'
+	undo = reset HEAD~1 --mixed
+	amend = commit -a --amend
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+	tags = tag
+	branches = branch -a
+	stashes = stash list
+	allbranches = for-each-ref --count=30 --sort=-comitterdate refs/heads/ --format='%(refname:short)'
+	ec = config --global -e
+
 [apply]
 
 	# Detect whitespace errors when applying a patch
@@ -124,11 +145,6 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-
-[commit]
-
-	# https://help.github.com/articles/signing-commits-using-gpg/
-	gpgsign = true
 
 [diff]
 
@@ -180,3 +196,6 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+[user]
+	email = ryaneilders@gmail.com
+	name = Ryan Eilders
