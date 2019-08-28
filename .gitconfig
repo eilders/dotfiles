@@ -76,6 +76,7 @@
 		fi \
 	}; f"
 
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	co = checkout
 	master = checkout master
 	br = branch
@@ -96,6 +97,8 @@
 	stashes = stash list
 	allbranches = for-each-ref --count=30 --sort=-comitterdate refs/heads/ --format='%(refname:short)'
 	ec = config --global -e
+	publish = "!git push -u origin $(git branch-name)"
+	unpublish = "!git push origin :$(git branch-name)"
 
 [apply]
 
@@ -196,6 +199,14 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+
 [user]
-	email = ryaneilders@gmail.com
-	name = Ryan Eilders
+	name = reilders
+	email = ryan.eilders@bamtechmedia.com
+[url "ssh://git@github.bamtech.co"]
+	insteadOf = git://github.bamtech.co
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
