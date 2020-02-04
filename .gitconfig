@@ -199,14 +199,3 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
-
-[user]
-	name = reilders
-	email = ryan.eilders@bamtechmedia.com
-[url "ssh://git@github.bamtech.co"]
-	insteadOf = git://github.bamtech.co
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
